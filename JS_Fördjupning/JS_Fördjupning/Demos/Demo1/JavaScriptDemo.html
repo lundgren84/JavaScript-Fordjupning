@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        
+        <script>
+            console.info("Inside my JavaScript");
+            function changeParagraphText(){
+                console.error("inside my method");
+                document.getElementById("Paragraph1").innerHTML = "Paragraph text is now changed";  
+                console.warn("JS method run");
+        }
+        </script>
+        
+        <script src="myScript.js"></script>
+    </head>
+    <body>
+        <h1 class="MainPagesHeadings" >Min första rubrik</h1>
+        <p ID="Paragraph1" onclick="changeParagraphText()">My First paragraph</p>
+        <button onclick="changeParagraphText()">Change paragraph text</button>
+        
+    </body>
+</html>

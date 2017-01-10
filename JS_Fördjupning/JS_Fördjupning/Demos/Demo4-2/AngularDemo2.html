@@ -1,0 +1,30 @@
+<DOCTYPE html>
+    <html data-ng-app>
+        <head>
+            <title></title>
+            <script src="scripts/angular.min.js"></script>
+        </head>
+        <body>
+            <div class="container" data-ng-init="students=[{name: 'Andreas', class:'2015'},
+                                                           {name: 'Sara', class:'2016'},
+                                                           {name: 'Niklas', class:'2015'},
+                                                           {name: 'Ida', class:'2016'}]">
+               
+              <h2>Loopa med Angular objekt</h2>
+              <ul>
+                  <li data-ng-repeat="student in students">{{ student.name | uppercase }}</li>
+              </ul>
+
+              <h2>Loopa + Filtrera med Angular</h2>
+              Filter: <input type="text" data-ng-model="filterList" />
+              <ul>
+                  <li data-ng-repeat="student in students | filter: filterList">
+                      {{ student.name }} - {{ student.class }}
+                  </li>
+              </ul>
+               
+            </div>
+            
+
+        </body>
+    </html>

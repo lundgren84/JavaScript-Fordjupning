@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+</head>
+<body ng-controller="myAppController">  
+    <a href="Index.html">Back</a>
+   <h3>Logged in as: {{currentUser}}</h3>
+    <h2>Movies</h2>
+   
+    <input type="text" placeholder="filter" ng-model="filmFilter" class="form-control" />
+  
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><h3>Title</h3></td>
+                    <td><h3>Year</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies | filter:filmFilter">
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.year}}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+  
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="Script/Variables.js"></script>
+    <script src="Script/Main.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">-->
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+</head>
+<body ng-controller="myAppController">
+    <div class="container" >
+        <h1>Login</h1>
+        <div class="row">
+            <div class="col-xs-2 "><label for="txtUserNameInput">Username:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 "><input class="form-control" id="txtUserNameInput" value="yourData.userName" type="text" ng-model="usernameInput" placeholder="Username" autofocus /></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><label for="txtPasswordInput">Password:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><input class="form-control" value="{{yourData.password}}" id="txtPasswordInput" ng-model="passwordInput" type="text" placeholder="Password" /></div>
+        </div>
+        <div class="row">          
+            <div class="col-xs-1"><label for="rememberMeCheckBoX">Remember me?</label></div>
+            <div class="col-xs-2"><input type="checkbox" id="rememberMeCheckBoX" ng-model="rememberMeCheckbox"/><br /></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><input type="button" data-ng-click="checkLogin()" value="Login" /></div>
+        </div>
+      <div class="row">
+          <div class="col-xs-2">
+              <a href="MoviePage.html"><input type="button" id="movieButton" value="Movies" /></a>
+              </div>
+          </div>
+    </div>
+ 
+  <div ng-repeat="user in Users">
+
+   Namn: {{user.name}}- UserName: {{user.userName}} - Password: {{user.password}}
+  </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="Script/Main.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html ng-app="myCompanyApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+</head>
+<body>
+
+    <div class="container" ng-controller="appController">
+        <h1>#myCompanyApp</h1>
+        <div class="row">
+            <input class="col-xs-12" id="studentBtn" type="button" value="Students" />
+            <input class="col-xs-12" id="educationBtn" type="button" value="Educations" />
+            <input class="col-xs-12" id="studentFormBtn" type="button" value="Register new Student" />
+            <input class="col-xs-12" id="searchDivBtn" type="button" value="Search Student" />
+        </div>
+        <div id="studentDiv">
+            <h3>Students</h3>
+            <table>
+                <thead>
+                    <tr style="font-size:larger">
+                        <td>Name</td>
+                        <td>Aktive</td>
+                        <td>Education</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="student in students">
+                        <td style="border:2px solid black">{{student.name}}</td>
+                        <td style="border:2px solid black">{{student.status}}</td>
+                        <td style="border:2px solid black">{{student.education}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="educationDiv">
+            <h3>Educations</h3>
+            <table>
+                <thead>
+                    <tr style="font-size:larger">
+                        <td>Name</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="education in educations">
+                        <td style="border:2px solid black">{{education.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="studentFormDiv">
+            <h3>Register new student</h3>
+            <label for="nameInput">Name</label>
+            <input type="text" id="nameInput" ng-model="newStudentName" autofocus />
+            <label for="educationInput">Education</label>
+            <input type="text" id="educationInput" ng-model="newStudentEducation" /><br />
+            <input type="button" ng-click="addNewStudent()" value="Register"/>
+            <div id="addStudentFormResult"></div>
+        </div>
+        <div id="searchStudentDiv">
+            <h3>Search Student</h3>
+
+            <input type="text" ng-model="searchString"/>
+            <input type="button" value="search" ng-click="SearchStudent()"/>
+            <input type="text"  ng-model="inputFilter.name"/>
+
+            <h4>Students</h4>
+            <table>
+                <thead>
+                    <tr style="font-size:larger">
+                        <td><input type="button" value="Name" /></td>
+                        <td><input type="button" value="Aktive" /></td>
+                        <td><input type="button" value="Education" /></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="student in studentSearchResult | filter:inputFilter">
+                        <td style="border:2px solid black">{{student.name}}</td>
+                        <td style="border:2px solid black">{{student.status}}</td>
+                        <td style="border:2px solid black">{{student.education}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="JavaScript.js"></script>
+</body>
+</html>
+<style>
+    .green{
+        background-color:lightgreen;
+    }
+    .red {
+        background-color:lightcoral;
+    }
+</style>

@@ -1,0 +1,25 @@
+p {
+    color:gold;
+}
+
+
+p.coloredParagraph {
+    color: lawngreen;
+}
+
+#Paragraph1 {
+
+    font-size: 24px;
+}
+
+/********* CLASSES *********/
+
+.MainPagesHeadings {
+    font-size: 18px;
+    color: darkred;
+}
+
+.MainPagesHeadings2 {
+    font-size: 18px;
+    color: yellowgreen;
+}

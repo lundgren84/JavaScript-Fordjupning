@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/personsController.js"></script>
+</head>
+<body>
+    <div data-ng-controller="personsController">
+    
+    <ul>
+        <li data-ng-repeat="person in persons | orderBy: 'name'">{{ person.name }} - {{ person.city}}</li>
+    </ul>
+
+    Person name<br />
+    <input type="text" data-ng-model="newPersonName" /><br />
+    Person city<br />
+    <input type="text" data-ng-model="newPersonCity" /><br />
+    <button data-ng-click="AddPerson()">Add Person</button>
+    </div>
+</body>
+</html>

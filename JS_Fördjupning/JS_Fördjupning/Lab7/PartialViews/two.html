@@ -1,0 +1,170 @@
+﻿<div>
+    <h2>2 TypeScript – Klasser (med arv)</h2>
+    <ol>
+        <li>Du ska nu börja skriva grundläggande logiken för en webbshop. </li>
+        <li>Det ska finnas minst 3 kategorier av produkter. (Book, DVD, Game). Varje typ av produkt ska ha en egen klass.  Det ska finnas en basklass som heter Product med egenskaperna Name, Category, Price och ArticelNumber. De andra klasserna ska ärva från denna klass. Lägg till lämpliga egenskaper beroende på produktkategori men minst</li>
+        <li>Varje produktkategori ska ha en egen Array för att hålla dessa. </li>
+        <li>Det ska finnas 3 knappar. </li>
+        <li>Knapp 1: lista alla produkter. Den här knappen ska lista alla produkter i en div. Visa här endast upp Name, Category, Price och ArticelNumber </li>
+        <li>Knapp 2: lista alla produkter av typen Book. Den ska visa upp egenskaperna Name, Price och ArticelNumber, Writer, Year </li>
+        <li>Knapp 3: lägga till en ny produkt. Knappen ska visa upp ett formulär där man kan lägga till en ny bok. Formuläret ska ligga in en gömd div som blir synlig när man trycker på knappen</li>
+    </ol>
+    <h3>Web-Shop</h3>
+    <input type="button" ng-click="sortBy('discriminator')" id="BtnAll" onclick="showAll()" value="Lista alla profukter" />
+    <input type="button" ng-click="sortBy('name')" id="btnBooks" onclick="showBooks()" value="Books" />
+    <input type="button" ng-click="sortBy('name')" id="btnDvds" onclick="showDvds()" value="DVD" />
+    <input type="button" ng-click="sortBy('name')" id="btnGames" onclick="showGames()" value="Game" />
+    <input type="button" id="btnNewProduct" onclick="showForm();" value="Lägga till ny produkt" />
+  <input type="text" ng-model="filterInput"  placeholder="Filter search"/>
+    <!-- Game div -->
+    <div id="gameDiv" class="hiddenDiv">
+        <div class="panel panel-default">
+            <div style="font-size:larger" class="panel-heading">Game´s</div>
+            <table class="table">
+                <thead style="background-color:#808080">
+                    <tr>
+                        <td><button ng-click="sortBy('name')">Name</button></td>
+                        <td><button ng-click="sortBy('price')">Price</button></td>
+                        <td><button ng-click="sortBy('category')">Cathegory</button></td>
+                        <td><button ng-click="sortBy('articleNumber')">ArticleNumber</button></td>
+                        <td><button ng-click="sortBy('console')">Console</button></td>
+                        <td><button ng-click="sortBy('multiplayer')">Multiplayer</button></td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="game in games | orderBy:orderFilter | filter:filterInput">
+                    <tr>
+                        <td>{{game.name}}</td>
+                        <td>{{game.price}}kr</td>
+                        <td>{{game.category}}</td>
+                        <td>{{game.articleNumber}}</td>
+                        <td>{{game.console}}</td>
+                        <td>{{game.multiplayer}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- Book div -->
+    <div id="bookDiv" class="hiddenDiv">
+        <div class="panel panel-default">
+            <div style="font-size:larger" class="panel-heading">Book´s</div>
+            <table class="table">
+                <thead style="background-color:#808080">
+                    <tr>
+                        <td><button ng-click="sortBy('name')">Name</button></td>
+                        <td><button ng-click="sortBy('price')">Price</button></td>
+                        <td><button ng-click="sortBy('category')">Cathegory</button></td>
+                        <td><button ng-click="sortBy('articleNumber')">ArticleNumber</button></td>
+                        <td><button ng-click="sortBy('writer')">Writer</button></td>
+                        <td><button ng-click="sortBy('pocket')">Pocket</button></td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="book in books | orderBy:orderFilter | filter:filterInput">
+                    <tr>
+                        <td>{{book.name}}</td>
+                        <td>{{book.price}}kr</td>
+                        <td>{{book.category}}</td>
+                        <td>{{book.articleNumber}}</td>
+                        <td>{{book.writer}}</td>
+                        <td>{{book.pocket}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- DVD div -->
+    <div id="dvdDiv" class="hiddenDiv">
+        <div class="panel panel-default">
+            <div style="font-size:larger" class="panel-heading">DVD´s</div>
+            <table class="table">
+                <thead style="background-color:#808080">
+                    <tr>
+                        <td><button ng-click="sortBy('name')">Name</button></td>
+                        <td><button ng-click="sortBy('price')">Price</button></td>
+                        <td><button ng-click="sortBy('category')">Cathegory</button></td>
+                        <td><button ng-click="sortBy('articleNumber')">ArticleNumber</button></td>
+                        <td><button ng-click="sortBy('year')">Year</button></td>
+                        <td><button ng-click="sortBy('artists')">Artists</button></td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="dvd in dvds | orderBy:orderFilter | filter:filterInput">
+                    <tr>
+                        <td>{{dvd.name}}</td>
+                        <td>{{dvd.price}}kr</td>
+                        <td>{{dvd.category}}</td>
+                        <td>{{dvd.articleNumber}}</td>
+                        <td>{{dvd.year}}</td>
+                        <td><span ng-repeat="artist in dvd.artists">{{artist}}, </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- All div -->
+    <div id="allDiv" class="hiddenDiv">
+        <div class="panel panel-default">
+            <div style="font-size:larger" class="panel-heading">All products</div>
+            <table class="table">
+                <thead style="background-color:#808080">
+                    <tr>
+                        <td><button ng-click="sortBy('name')">Name</button></td>
+                        <td><button ng-click="sortBy('discriminator')">Discriminator</button></td>
+                        <td><button ng-click="sortBy('price')">Price</button></td>
+                        <td><button ng-click="sortBy('category')">Cathegory</button></td>
+                        <td><button ng-click="sortBy('articleNumber')">ArticleNumber</button> </td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="product in products | orderBy:orderFilter | filter:filterInput">
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.discriminator}}</td>
+                        <td>{{product.price}}kr</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.articleNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Form div -->
+    <div id="formDiv" class="hiddenDiv">
+        <h3>Create new product</h3>
+        <input type="button" value="Book" />
+        <input type="button" value="DVD" />
+        <input type="button" value="Game" />
+        <form>
+            <table style="text-align:right">
+                <tr>
+                    <td><label for="txtName">Name: </label></td>
+                    <td><input type="text" id="txtName" ng-model="newBookName" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txtPrice">Price: </label></td>
+                    <td><input id="txtPrice" type="number" ng-model="newBookPrice" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txtCathegory">Cathegory: </label></td>
+                    <td><input id="txtCathegory" type="text" ng-model="newBookCathegory" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txtArticleNumber">ArticleNumber: </label></td>
+                    <td><input id="txtArticleNumber" type="number" ng-model="newBookArticleNumber" /></td>
+                </tr>
+                <tr>
+                    <td><label for="txtWriter">Writer: </label></td>
+                    <td><input id="txtWriter" type="text" ng-model="newBookWriter" /></td>
+                </tr>   
+                <tr>
+                    <td><label>Pocket: </label></td>
+                    <td><label for="radioPocketYes">Yes </label><input id="radioPocketYes" type="radio" value="true" ng-model="newBookPocket" name="pocket" />
+                         <label for="radioPocketNo">No </label><input id="radioPocketNo" type="radio" name="pocket" value="false" /></td>
+                </tr> 
+                <tr>
+                    <td><input type="submit" id="submitButton" ng-click="AddNewBook()" value="Läggtill" /></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<DOCTYPE html>
+    <html data-ng-app>
+        <head>
+            <title></title>
+            <script src="scripts/angular.min.js"></script>
+        </head>
+        <body>
+            <div class="container" data-ng-init="students=['Andreas', 'Maria', 'Ali']">
+               <h1>Angular - Första Exempel</h2>
+               Name: <input type="text" data-ng-model="name"/>{{ name }}
+              <br />
+              <h2>Loopa med Angular</h2>
+              <ul>
+                  <li data-ng-repeat="studentName in students | orderBy: studentName">{{ studentName }}</li>
+              </ul>
+               
+            </div>
+            
+
+        </body>
+    </html>

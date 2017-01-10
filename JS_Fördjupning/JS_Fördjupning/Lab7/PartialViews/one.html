@@ -1,0 +1,23 @@
+﻿<div>
+    <h2>1 TypeScript - Basics (Valuta omvandlare)</h2>
+   <ol>
+       <li>Du ska skriva en Valutaomvandlare som omvandlar från Euro till svenska kronor och vice versa</li>
+       <li>Skapa två input-fält. Det ena för att skriva Euro och det andra för svenska kronor.</li>
+       <li>Det ska finnas två stycken knappar. Den ena ska omvandla från SEK till Euro och den andra från Euro till SEK</li>
+   </ol>
+
+  
+    <h3>Valuta omvandlare</h3>
+    <label>SK</label>
+    <input type="number" ng-change="updateEuro()" id="SekInput" value="0" ng-model="SekInput" />
+    <input type="button" value="To Euro" onclick="FillDivWithEuro()" />
+    
+    <label>Euro</label>
+    <input type="number" ng-change="updateSek()" id="EuroInput" value="0" ng-model="EuroInput" />
+    <input type="button" value="To SEK" onclick="FillDivWithSek()" />
+    <div id="ResultDiv"></div>
+
+
+</div>
+
+
