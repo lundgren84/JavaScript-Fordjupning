@@ -117,7 +117,6 @@ module Animals {
             this.Name = theName;
         }
     }
-
 }
 
 // let newPet: MainApp.Snake = new MainApp.Snake("name");
